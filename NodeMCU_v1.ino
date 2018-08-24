@@ -190,8 +190,67 @@ void loop() {
               digitalWrite(output16, LOW);
             }
             //
+            else if (header.indexOf("GET /redno/on") >= 0) {
+              output16stanje = "on";
+              digitalWrite(output16, HIGH);
+              delay(1000);
+              output5stanje = "on";
+              digitalWrite(output5, HIGH);
+              delay(1000);
+              output4stanje = "on";
+              digitalWrite(output4, HIGH);
+              delay(1000);
 
+              output0stanje = "on";
+              digitalWrite(output0, HIGH);
+              delay(1000);
 
+              output2stanje = "on";
+              digitalWrite(output2, HIGH);
+              delay(1000);
+
+              output14stanje = "on";
+              digitalWrite(output14, HIGH);
+              delay(1000);
+
+              output12stanje = "on";
+              digitalWrite(output12, HIGH);
+              delay(1000);
+
+              output13stanje = "on";
+              digitalWrite(output13, HIGH);
+              delay(1000);
+            } else if (header.indexOf("GET /redno/off") >= 0) {
+              output16stanje = "on";
+              digitalWrite(output16, LOW);
+              delay(1000);
+              output5stanje = "on";
+              digitalWrite(output5, LOW);
+              delay(1000);
+              output4stanje = "on";
+              digitalWrite(output4, LOW);
+              delay(1000);
+
+              output0stanje = "on";
+              digitalWrite(output0, LOW);
+              delay(1000);
+
+              output2stanje = "on";
+              digitalWrite(output2, LOW);
+              delay(1000);
+
+              output14stanje = "on";
+              digitalWrite(output14, LOW);
+              delay(1000);
+
+              output12stanje = "on";
+              digitalWrite(output12, LOW);
+              delay(1000);
+
+              output13stanje = "on";
+              digitalWrite(output13, LOW);
+              delay(1000);
+            }
             // Display the HTML web page
             client.println("<!DOCTYPE html><html>");
             client.println("<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
@@ -283,6 +342,15 @@ void loop() {
             } else {
               client.println("<p><a href=\"/16/off\"><button class=\"button button2\">OFF</button></a></p>");
             }
+            //
+            client.println("<p>8 rednih sa delay-om </p>");
+            // If the output13stanje is off, it displays the ON button
+            if (output16stanje == "off") {
+              client.println("<p><a href=\"/redno/on\"><button class=\"button\">ON</button></a></p>");
+            }else {
+              client.println("<p><a href=\"/redno/off\"><button class=\"button button2\">OFF</button></a></p>");
+            }
+
             //
             client.println("</body></html>");
 
